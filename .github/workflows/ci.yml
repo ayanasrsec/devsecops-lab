@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0        # full history, needed by Gitleaks
+          fetch-depth: 0
 
       # Gitleaks scan (before compilation)
       - name: Run Gitleaks scan
@@ -79,3 +79,8 @@ jobs:
           format: 'table'
           severity: 'CRITICAL,HIGH'
           exit-code: '1'
+          # ignore-unfixed: true   # uncomment if Trivy fails on vulnerabilities with no fix
+
+      # Push Docker image to Docker Hub
+      - name: Push Docker image
+        run: docker push $DOCKER_IMAGE_NAME
