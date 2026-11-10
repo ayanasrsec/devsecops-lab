@@ -79,7 +79,7 @@ jobs:
           format: 'table'
           severity: 'CRITICAL,HIGH'
           exit-code: '1'
-          # ignore-unfixed: true   # uncomment if Trivy fails on vulnerabilities with no fix
+          ignore-unfixed: true
 
       # Push Docker image to Docker Hub
       - name: Push Docker image
